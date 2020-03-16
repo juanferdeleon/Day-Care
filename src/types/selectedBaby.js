@@ -1,0 +1,1 @@
+export const SELECTED_BABY = 'SELECTED_BABY';
