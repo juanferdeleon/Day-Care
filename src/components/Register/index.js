@@ -1,6 +1,7 @@
 import React from 'react';
 import { v4 as uuid } from 'uuid';
 import { reduxForm, Field } from 'redux-form';
+import { Link } from 'react-router-dom';
 import './styles.css';
 
 import * as actions from '../../actions/babies'
@@ -14,7 +15,9 @@ const RegisterBaby = ({ handleSubmit, submitting }) => {
                 <Field name="firstName" className="firstName" label="Nombre" component={renderInput}/>
                 <Field name="lastName" className="lastName" label="Apellido" component={renderInput}/>
                 <div className="createAccount">
-                    <button type="submit" disabled={submitting}>Agregar</button>
+                    <Link to='/menu'>
+                        <button type="submit" disabled={submitting}>Agregar</button>
+                    </Link>
                 </div>
             </form>
         </div>
@@ -47,6 +50,7 @@ export default reduxForm({
     form: 'registerBabyForm',
     destroyOnUnmount: false,
     onSubmit(values, dispatch){
+        console.log(values)
         dispatch(actions.addBaby(uuid(), values));
     },
     validate

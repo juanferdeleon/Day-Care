@@ -1,6 +1,6 @@
 import * as types from '../types/selectedBaby'
 
-const selectedBaby = (state = null, action) => {
+const selectedBaby = (state = 1, action) => {
 
     switch(action.type){
         case types.SELECTED_BABY:

@@ -21,6 +21,11 @@ const byId = (state = {}, action) => {
 const babiesEvents = (state = {}, action) => {
 
     switch(action.type){
+        case types.BABY_ADDED:
+            return{
+                ...state,
+                [action.payload.babyId]: [],
+            }
         case types.EVENT_ADDED:
             return{
                 ...state,

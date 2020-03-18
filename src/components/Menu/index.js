@@ -4,21 +4,21 @@ import { reduxForm, Field } from 'redux-form';
 import './styles.css';
 
 import * as actions from '../../actions/babies'
+import SelectedBabyForm from '../SelectedBaby/index';
+import AddEvent from '../AddEvent/index';
 
 const Menu = ({ handleSubmit, submitting }) => {
     return (
-    <div className = "wrapper">
-        <div className = "form-wrapper">
-            <h1>Eventos</h1>
-            <form onSubmit={handleSubmit}>
-                <Field name="firstName" className="firstName" label="Nombre" component={renderInput}/>
-                <Field name="lastName" className="lastName" label="Apellido" component={renderInput}/>
-                <div className="createAccount">
-                    <button type="submit" disabled={submitting}>Agregar</button>
-                </div>
-            </form>
+        <div className = "wrapper">
+            <div className = "form-wrapper">
+                <h1>Bebes</h1>
+                <SelectedBabyForm/>
+            </div>
+            <div className = "form-wrapper">
+                <h1>Eventos</h1>
+                <AddEvent/>
+            </div>
         </div>
-    </div>
     )
 };
 

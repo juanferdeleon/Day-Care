@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import * as types from '../types/babies';
 
-const byId = (state = {}, action) => {
+const byId = (state = {1: {nombre: 'Juan', apellido: 'De Leon'}}, action) => {
 
     switch(action.type){
         case types.BABY_ADDED:
@@ -15,7 +15,7 @@ const byId = (state = {}, action) => {
 
 }
 
-const order = (state = [], action) => {
+const order = (state = [1], action) => {
 
     switch(action.type){
         case types.BABY_ADDED:
