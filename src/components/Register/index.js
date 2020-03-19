@@ -1,17 +1,18 @@
 import React from 'react';
 import { v4 as uuid } from 'uuid';
 import { reduxForm, Field } from 'redux-form';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './styles.css';
 
 import * as actions from '../../actions/babies'
 
-const RegisterBaby = ({ handleSubmit, submitting }) => {
+const RegisterBaby = ({ handleSubmit, submitting, onSubmit }) => {
     return (
     <div className = "wrapper">
         <div className = "form-wrapper">
             <h1>Ingresa un nuevo bebé</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit(values => onSubmit(values))}>
                 <Field name="firstName" className="firstName" label="Nombre" component={renderInput}/>
                 <Field name="lastName" className="lastName" label="Apellido" component={renderInput}/>
                 <div className="createAccount">
@@ -49,9 +50,12 @@ const renderInput = ({ input, meta, label }) =>
 export default reduxForm({
     form: 'registerBabyForm',
     destroyOnUnmount: false,
-    onSubmit(values, dispatch){
-        console.log(values)
-        dispatch(actions.addBaby(uuid(), values));
-    },
     validate
-})(RegisterBaby)
+})(connect(
+    undefined,
+    dispatch => ({
+        onSubmit(values){
+            dispatch(actions.addBaby(uuid(), values));
+        }
+    })
+)(RegisterBaby))

@@ -36,13 +36,6 @@ const validate = values => {//Validacion del Register Form
     return error
 }
 
-const renderInput = ({ input, meta, label }) =>
-    <div className="field" >
-        <label>{label}</label>
-        <input {...input} className={[meta.active ? 'active' : '', meta.error && meta.touched ? 'error' : ''].join('')} placeholder={label}/>
-        {meta.error && meta.touched && <span className="errorMessage">{meta.error}</span>}
-    </div>
-
 export default reduxForm({
     form: 'babyEventsForm',
     destroyOnUnmount: false,

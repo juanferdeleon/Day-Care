@@ -18,6 +18,8 @@ export const getBaby = (state, babyId) => babiesSelectors.getBaby(state.babies, 
 
 export const getBabies = (state) => babiesSelectors.getBabies(state.babies)
 
+export const getBabiesOrder = state => babiesSelectors.getBabiesOrder(state.babies)
+
 export const getEvent = (state, eventId) => eventsSelectors.getEvent(state.events, eventId)
 
 export const getEvents = (state) => eventsSelectors.getEvents(state.events)
