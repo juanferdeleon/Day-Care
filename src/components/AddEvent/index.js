@@ -9,9 +9,9 @@ import * as selectors from '../../reducers/index';
 import events from '../../Data/events';
 import { connect } from 'react-redux';
 
-const AddEvent = ({ handleSubmit, submitting, babyId }) => (
+const AddEvent = ({ handleSubmit, submitting, selectedBaby, onSubmit }) => (
     <div className="eventsForm">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit((values) => onSubmit(values, selectedBaby))}>
             <div className="field">
             <label>Evento</label>
             <Field name="eventType" className="lastName" label="Evento" component={renderSelect}>
@@ -37,20 +37,17 @@ const AddEvent = ({ handleSubmit, submitting, babyId }) => (
 const renderSelect = ({ input, children }) => <select {...input}>{children}</select>
 const renderInput = ({ input }) => <input {...input}/>
 
-export default reduxForm({
+export default 
+reduxForm({
     form: 'babyEventForm',
     destroyOnUnmount: false,
-    onSubmit(values, dispatch, babyId){
-        console.log(values)
-    }
 })(connect(
-    state => {
-        console.log(selectors.getSelectedBaby(state))
-    }
-    // ({
-    //     babyId: selectors.getBaby(state)
-    // }),
-    // (dispatch, { babyId, values }) => (
-    //     //dispatch(actions.addEvent(uuid(), values, babyId))
-    // )
+    state => ({
+        selectedBaby: selectors.getSelectedBaby(state)
+    }),
+    dispatch => ({
+        onSubmit(values, selectedBaby){
+            dispatch(actions.addEvent(uuid(), values, selectedBaby))
+        },
+    })
 )(AddEvent))
