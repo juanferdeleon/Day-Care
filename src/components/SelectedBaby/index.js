@@ -38,8 +38,6 @@ const SelectBabyForm = ({handleSubmit, onSubmit, number, babies, selectedBaby}) 
                                 {
                                     babies.map(baby => {
                                         const [ bb ] = Object.entries(baby)
-                                        console.log('Selected Baby',selectedBaby)
-                                        console.log('bb[1]',bb[1])
                                         if (bb[0] == selectedBaby){
                                             return `El bebe seleccionado es ${bb[1].firstName}`
                                         }

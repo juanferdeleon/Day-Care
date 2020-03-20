@@ -47,6 +47,10 @@ reduxForm({
     }),
     dispatch => ({
         onSubmit(values, selectedBaby){
+            const dateTime = require('node-datetime');
+            const dt = dateTime.create()
+            const format = dt.format('Y-m-d H:M:S')
+            values.dateTime = format
             dispatch(actions.addEvent(uuid(), values, selectedBaby))
         },
     })

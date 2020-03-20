@@ -6,6 +6,7 @@ import './styles.css';
 import * as actions from '../../actions/babies'
 import SelectedBabyForm from '../SelectedBaby/index';
 import AddEvent from '../AddEvent/index';
+import BabyEvents from '../BabyEvents/index';
 
 const Menu = ({ handleSubmit, submitting }) => {
     return (
@@ -13,6 +14,7 @@ const Menu = ({ handleSubmit, submitting }) => {
             <div className = "form-wrapper">
                 <h1>Bebes</h1>
                 <SelectedBabyForm/>
+                <BabyEvents/>
             </div>
             <div className = "form-wrapper">
                 <h1>Eventos</h1>

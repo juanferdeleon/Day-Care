@@ -11,7 +11,19 @@ const byId = (state = {}, action) => {
                 [action.payload.eventId]: action.payload.eventInfo,
             }
         case types.EVENT_DELETED:
-            return omit(state, action.payload)
+            // console.log(omit(state, action.payload))
+            return state
+        default:
+            return state
+    }
+
+}
+
+const order = (state = [], action) => {
+
+    switch(action.type){
+        case types.EVENT_ADDED:
+            return [...state, action.payload.eventId]
         default:
             return state
     }
@@ -46,6 +58,7 @@ const babiesEvents = (state = {1: []}, action) => {
 const events = combineReducers ({
     byId,
     babiesEvents,
+    order
 })
 
 export default events;
@@ -53,7 +66,7 @@ export default events;
 export const getEvent = (state, eventId) => state.byId[eventId];
 
 export const getEvents = state => state.order.map(
-    eventId => getEvent(state, eventId),
+    eventId => ({[eventId]: getEvent(state, eventId)}),
 ).filter(event => event != null);
 
 export const getBabyEvents = (state, babyId) => state.babiesEvents[babyId];

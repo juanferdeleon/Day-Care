@@ -1,0 +1,14 @@
+.event-card-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    padding: 1em;
+}
+
+.card-wrapper{
+    background-color: #7EB09B;
+    border-radius: 1em;
+    padding: 1em;
+}
