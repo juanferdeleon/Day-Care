@@ -29,6 +29,11 @@ div {
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 7rem;
   padding: 0 2rem;
+
+  position: absolute;
+  top: 100px;
+  left: 0;
+  right: 0;
 }
 
 .img {
@@ -103,10 +108,6 @@ form {
 .input-div.focus::before {
   width: 50%;
   transition: 0.3s;
-}
-
-.input-div.form-error::after {
-  color: red($color: #000000);
 }
 
 .one {

@@ -3,10 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 import { reduxForm, Field } from "redux-form";
 
-import BabyLogo from "../../img/undraw_baby_ja7a.svg";
+import RegisterLogo from "../../img/undraw_access_account_99n5.svg";
 import ProfileLogo from "../../img/undraw_profile_pic_ic5t.svg";
-import "../../styles/style.css";
 import { Link } from "react-router-dom";
+import "../../styles/style.css";
 
 const renderInput = ({ input, meta, label }) => (
   <div
@@ -51,11 +51,11 @@ const validate = (values) => {
   return errors;
 };
 
-const Login = ({ handleSubmit, submitting }) => {
+const Register = ({ handleSubmit, submitting }) => {
   return (
     <div className="container">
       <div className="img">
-        <img src={BabyLogo} />
+        <img src={RegisterLogo} />
       </div>
       <div className="login-container">
         <img className="avatar" src={ProfileLogo} />
@@ -73,11 +73,11 @@ const Login = ({ handleSubmit, submitting }) => {
             label="Contraseña"
             component={renderInput}
           />
-          <Link to="/register">
-            <small>¿No tienes una cuenta?</small>
+          <Link to="/">
+            <small>¿Ya tienes una cuenta?</small>
           </Link>
           <button className="btn" type="submit" disabled={submitting}>
-            Login
+            Registrar
           </button>
         </form>
       </div>
@@ -86,10 +86,10 @@ const Login = ({ handleSubmit, submitting }) => {
 };
 
 export default reduxForm({
-  form: "loginForm",
+  form: "registerForm",
   destroyOnUnmount: false,
   onSubmit(values, dispatch) {
     //TODO Validacion y manejo del estado
   },
   validate,
-})(Login);
+})(Register);
