@@ -143,7 +143,7 @@ JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=86400)
 }
 
-AUTHENTICATION_BACKENDS = (
+AUTHENTICATION_BACKENDS = {
     'django.contrib.auth.backends.ModelBackend', # this is default
     'guardian.backends.ObjectPermissionBackend',
-)
+}

@@ -20,9 +20,9 @@ class UserViewSet(viewsets.ModelViewSet):
             permission_configuration={
                 'base': {
                     'create': True,
-                    'list': False,
-                    'update': True,
-                    'partial_update': True,
+                    'list': True,
+                    'update': False,
+                    'partial_update': False,
                 },
                 'instance': {
                     'retrieve': False,
@@ -33,16 +33,51 @@ class UserViewSet(viewsets.ModelViewSet):
         )
     ]
 
-    # #TODO las definiciones de Usuario
-    # @action(detail=False, url_path='get-user', methods=['GET'])
-    # def listar(self, request):
-    #     '''Pruebas'''
-    #     return Response({'message': 'Esta es una prueba del User Viewset'})
+class BabyViewSet(viewsets.ModelViewSet):
+    '''Handles creating, reading and updating babies'''
 
-# class BabyViewSet(viewsets.ModelViewSet):
-#     #TODO las definiciones de Bebe
-#     def 
+    queryset = models.Baby.objects.all()
+    serializer_class = serializers.BabySerializer
+    permission_classes = [
+        permissions.APIPermissionClassFactory(
+            name='BabyPermissions',
+            permission_configuration={
+                'base': {
+                    'create': True,
+                    'list': True,
+                    'update': False,
+                    'partial_update': False,
+                },
+                'instance': {
+                    'retrieve': False,
+                    'destroy': True,
+                    'update': False,
+                }
+            }
+        )
+    ]
+    
 
-# class EventViewSet(viewsets.ModelViewSet):
-#     #TODO las definiciones de Evento
-#     def 
+class EventViewSet(viewsets.ModelViewSet):
+    '''Handles creating, reading and updating events'''
+
+    queryset = models.Event.objects.all()
+    serializer_class = serializers.EventSerializer
+    permission_classes = [
+        permissions.APIPermissionClassFactory(
+            name='EventPermissions',
+            permission_configuration={
+                'base': {
+                    'create': True,
+                    'list': True,
+                    'update': False,
+                    'partial_update': False,
+                },
+                'instance': {
+                    'retrieve': False,
+                    'destroy': True,
+                    'update': False,
+                }
+            }
+        )
+    ]

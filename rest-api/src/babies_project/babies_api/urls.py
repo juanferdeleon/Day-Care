@@ -6,8 +6,8 @@ from . import views
 router = DefaultRouter()
 
 router.register('profile', views.UserViewSet)
-# router.register('baby-viewset', views.BabyViewSet)
-# router.register('event-viewset', views.EventViewSet)
+router.register('baby', views.BabyViewSet)
+router.register('event', views.EventViewSet)
 
 #TODO add path
 urlpatterns = [
